@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Kreator CV</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Kreator CV</h1>
+        <div class="language-switch">
+            <a href="{{ url_for('set_language', lang='pl') }}">Polski</a> | <a href="{{ url_for('set_language', lang='en') }}">English</a>
+        </div>
+        <form action="/save" method="POST" enctype="multipart/form-data">
+            <label for="name">{{ 'Imię i nazwisko' if data.get('language', 'pl') == 'pl' else 'Name' }}:</label>
+            <input type="text" id="name" name="name" required><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+            <label for="phone">{{ 'Telefon' if data.get('language', 'pl') == 'pl' else 'Phone' }}:</label>
+            <input type="tel" id="phone" name="phone" required><br>
+            <label for="experience">{{ 'Doświadczenie zawodowe' if data.get('language', 'pl') == 'pl' else 'Work Experience' }}:</label>
+            <textarea id="experience" name="experience" required></textarea><br>
+            <label for="education">{{ 'Wykształcenie' if data.get('language', 'pl') == 'pl' else 'Education' }}:</label>
+            <textarea id="education" name="education" required></textarea><br>
+            <label for="skills">{{ 'Umiejętności' if data.get('language', 'pl') == 'pl' else 'Skills' }}:</label>
+            <textarea id="skills" name="skills" required></textarea><br>
+            <label for="interests">{{ 'Zainteresowania' if data.get('language', 'pl') == 'pl' else 'Interests' }}:</label>
+            <textarea id="interests" name="interests" required></textarea><br>
+            <label for="photo">{{ 'Zdjęcie' if data.get('language', 'pl') == 'pl' else 'Photo' }}:</label>
+            <input type="file" id="photo" name="photo"><br>
+            <button type="submit">{{ 'Zapisz' if data.get('language', 'pl') == 'pl' else 'Save' }}</button>
+        </form>
+        <a href="/view_cv">{{ 'Podgląd CV' if data.get('language', 'pl') == 'pl' else 'View CV' }}</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Podgląd CV</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Podgląd CV</h1>
+        <p><strong>{{ 'Imię i nazwisko' if data.get('language', 'pl') == 'pl' else 'Name' }}:</strong> {{ data.name }}</p>
+        <p><strong>Email:</strong> {{ data.email }}</p>
+        <p><strong>{{ 'Telefon' if data.get('language', 'pl') == 'pl' else 'Phone' }}:</strong> {{ data.phone }}</p>
+        <p><strong>{{ 'Doświadczenie zawodowe' if data.get('language', 'pl') == 'pl' else 'Work Experience' }}:</strong> {{ data.experience }}</p>
+        <p><strong>{{ 'Wykształcenie' if data.get('language', 'pl') == 'pl' else 'Education' }}:</strong> {{ data.education }}</p>
+        <p><strong>{{ 'Umiejętności' if data.get('language', 'pl') == 'pl' else 'Skills' }}:</strong> {{ data.skills }}</p>
+        <p><strong>{{ 'Zainteresowania' if data.get('language', 'pl') == 'pl' else 'Interests' }}:</strong> {{ data.interests }}</p>
+        {% if data.photo %}
+        <p><strong>{{ 'Zdjęcie' if data.get('language', 'pl') == 'pl' else 'Photo' }}:</strong><br>
+        <img src="{{ url_for('static', filename=data.photo) }}" alt="Photo" width="150"></p>
+        {% endif %}
+        <a href="/view_cv">{{ 'Generuj CV' if data.get('language', 'pl') == 'pl' else 'Generate CV' }}</a>
+    </div>
+</body>
+</html>

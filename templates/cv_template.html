@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>CV</title>
+    <style>
+        @font-face {
+            font-family: 'DejaVuSans';
+            src: url("{{ url_for('static', filename='fonts/DejaVuSans.ttf') }}") format('truetype');
+        }
+        body {
+            font-family: 'DejaVuSans', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+        }
+        .header {
+            text-align: center;
+        }
+        .section {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>{{ data.name }}</h1>
+            <p>{{ data.email }} | {{ data.phone }}</p>
+            {% if data.photo %}
+            <img src="{{ data.photo }}" alt="Photo" width="150">
+            {% endif %}
+        </div>
+        <div class="section">
+            <h2>{{ 'Doświadczenie zawodowe' if data.get('language', 'pl') == 'pl' else 'Work Experience' }}</h2>
+            <p>{{ data.experience }}</p>
+        </div>
+        <div class="section">
+            <h2>{{ 'Wykształcenie' if data.get('language', 'pl') == 'pl' else 'Education' }}</h2>
+            <p>{{ data.education }}</p>
+        </div>
+        <div class="section">
+            <h2>{{ 'Umiejętności' if data.get('language', 'pl') == 'pl' else 'Skills' }}</h2>
+            <p>{{ data.skills }}</p>
+        </div>
+        <div class="section">
+            <h2>{{ 'Zainteresowania' if data.get('language', 'pl') == 'pl' else 'Interests' }}</h2>
+            <p>{{ data.interests }}</p>
+        </div>
+    </div>
+</body>
+</html>
