@@ -15,7 +15,7 @@ Kreator CV to aplikacja internetowa, która umożliwia użytkownikom tworzenie i
 1. Sklonuj repozytorium na swój lokalny komputer:
 
     ```bash
-    git clone https://github.com/twojanazwa/cv_creator.git
+    git clone https://github.com/kl4mk4/cv_creator.git
     ```
 
 2. Przejdź do katalogu projektu:
